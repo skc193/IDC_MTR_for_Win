@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Build artifacts
+build/
+dist/
+*.spec
+*.exe
+
+# Runtime data
+*.log
+*.db
+
+# Generated reports
+*.html
