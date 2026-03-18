@@ -10,7 +10,7 @@
 
 | 檔案 | 說明 |
 |------|------|
-| `IDC_MTR_Monitor.exe` | 可直接執行的 Windows 執行檔（免安裝 Python） |
+| `idc_mtr_monitor_win.exe` | 可直接執行的 Windows 執行檔（免安裝 Python） |
 | `idc_mtr_monitor_win.py` | Python 原始碼 |
 
 執行後會自動產生以下檔案（以目標 IP `8.8.8.8` 為例）：
@@ -27,13 +27,13 @@
 
 ### GUI 模式（推薦）
 
-直接雙擊 `IDC_MTR_Monitor.exe`，彈出設定視窗，填入目標 IP 及參數後按「開始監測」。
+直接雙擊 `idc_mtr_monitor_win.exe`，彈出設定視窗，填入目標 IP 及參數後按「開始監測」。
 
 ### 命令列模式（進階）
 
 ```
-IDC_MTR_Monitor.exe 8.8.8.8
-IDC_MTR_Monitor.exe 168.95.1.1 -i 600 -c 20
+idc_mtr_monitor_win.exe 8.8.8.8
+idc_mtr_monitor_win.exe 168.95.1.1 -i 600 -c 20
 ```
 
 完整參數：
@@ -111,6 +111,6 @@ IDC_MTR_Monitor.exe 168.95.1.1 -i 600 -c 20
 1. Log 和報告會存在 exe 所在的資料夾
 2. 監控主機需要有網路連線才能執行 tracert/ping
 3. 若 Windows Defender 誤判 exe，請加入排除清單
-4. 停止程式：工作管理員 → 找到 `IDC_MTR_Monitor.exe` → 結束工作
+4. 停止程式：工作管理員 → 找到 `idc_mtr_monitor_win.exe` → 結束工作
 5. 報告可直接用瀏覽器開啟 HTML 檔案查看，包含即時圖表
 6. 資料庫 (.db) 保留所有歷史紀錄，可用 SQLite 工具查詢
