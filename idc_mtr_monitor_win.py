@@ -371,7 +371,7 @@ def check_alerts(db_path, target, hops_data, ts):
             if h["loss_pct"] >= ALERT_LOSS:
                 msg = "Hop{} ({}) 封包遺失 {:.1f}% 超過閾值 {}%".format(
                     h["hop_num"], h["hop_ip"], h["loss_pct"], ALERT_LOSS)
-                logging.warning("⚠️  " + msg)
+                logging.warning("[!] " + msg)
                 conn.execute(
                     "INSERT INTO alerts (timestamp,target,hop_num,hop_ip,type,value,message)"
                     " VALUES(?,?,?,?,?,?,?)",
@@ -379,7 +379,7 @@ def check_alerts(db_path, target, hops_data, ts):
             if h.get("avg_ms") and h["avg_ms"] >= ALERT_LATENCY:
                 msg = "Hop{} ({}) 延遲 {:.1f}ms 超過閾值 {}ms".format(
                     h["hop_num"], h["hop_ip"], h["avg_ms"], ALERT_LATENCY)
-                logging.warning("⚠️  " + msg)
+                logging.warning("[!] " + msg)
                 conn.execute(
                     "INSERT INTO alerts (timestamp,target,hop_num,hop_ip,type,value,message)"
                     " VALUES(?,?,?,?,?,?,?)",
@@ -725,7 +725,7 @@ new Chart(document.getElementById('lossChart'),{{type:'bar',
 
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(html)
-    logging.info("📊 報告已更新：{}".format(os.path.abspath(report_path)))
+    logging.info("[報告] 已更新：{}".format(os.path.abspath(report_path)))
 
 # ─────────────────── 主程式 ───────────────────
 
@@ -743,7 +743,7 @@ def show_config_dialog():
     result: dict = {}
 
     root = tk.Tk()
-    root.title("🛰️ IDC MTR 監測設定")
+    root.title("IDC MTR 監測設定")
     root.resizable(True, True)
     root.minsize(580, 480)
     root.geometry("620x520")
@@ -895,7 +895,7 @@ def main():
     init_db(db)
 
     logging.info("=" * 65)
-    logging.info("🛰️  MTR 全路由節點監測啟動（Windows 版）")
+    logging.info("[MTR] 全路由節點監測啟動（Windows 版）")
     logging.info("   目標 IP   : {}".format(target))
     logging.info("   掃描間隔  : {} 秒".format(interval))
     logging.info("   Ping 次數 : {} 封包/跳點".format(cycles))
@@ -910,7 +910,7 @@ def main():
     while running:
         start_t = time.time()
         ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        logging.info("▶  開始掃描 → {}".format(target))
+        logging.info("[掃描] 開始 -> {}".format(target))
 
         hops = run_mtr_scan(
             target, cycles,
